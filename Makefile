@@ -9,7 +9,7 @@ clean:
 	@rm -rf dist cover.out
 
 build: clean
-	@go build -v -trimpath -o ${BIN_OUTPUT} .
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v -trimpath -o ${BIN_OUTPUT} .
 
 test: clean
 	@go test -v -count=1 -cover ./...
